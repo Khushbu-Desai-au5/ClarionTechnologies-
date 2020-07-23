@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AddProduct from './AddProduct';
 
 
-
 class Dashboard extends Component {
     state = {
         name: '',
@@ -11,31 +10,31 @@ class Dashboard extends Component {
                 id: 1,
                 name: 'Laptop',
                 rate: 43500,
-                quality: [1, 2, 3]
+                quality: 2
             },
             {
                 id: 2,
                 name: 'Desktop',
                 rate: 30000,
-                quality: [1, 2, 3]
+                quality: 3
             },
             {
                 id: 3,
                 name: 'Keyboard',
                 rate: 900,
-                quality: [1, 2, 3]
+                quality: 1
             },
             {
                 id: 4,
                 name: 'SSD',
                 rate: 5500,
-                quality: [1, 2, 3]
+                quality: 3
             },
             {
                 id: 5,
                 name: 'HDD',
                 rate: 4500,
-                quality: [1, 2, 3]
+                quality: 1
             }
         ],
         isAddProduct: false
@@ -44,7 +43,7 @@ class Dashboard extends Component {
     componentDidMount() {
 
         if (this.props.location) {
-            let email = this.props.location.state && this.props.location.state.email || ''
+            let email = this.props.location.state ? this.props.location.state.email : ''
             let name = email.split('@')[0]
             this.setState({ name: name })
         }
@@ -83,7 +82,8 @@ class Dashboard extends Component {
                             <div className="card" key={product.id}>
                                 <div className="card-body">
                                     <h5 className="card-title">{product.name}</h5>
-                                    <p className="card-text">{product.rate}</p>
+                                    <p className="card-text"><i class="fa fa-inr" aria-hidden="true"></i>{product.rate}</p>
+                                    <p className="card-text">Quality : {product.quality}</p>
                                     <a href='#' className="card-link" onClick={() => this.deleteProduct(product)}>Delete Product</a>
                                 </div>
                             </div>

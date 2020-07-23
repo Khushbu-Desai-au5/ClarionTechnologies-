@@ -12,7 +12,7 @@ class Login extends Component {
         passwordFormatNotMatch: false
     }
 
-    handleChange = (name) => (event) => {
+    handleChange = (name, event) => {
         this.setState({
             [name]: event.target.value
         })
@@ -64,17 +64,17 @@ class Login extends Component {
                     <form>
                         <div class="form-group">
                             <label >Email</label>
-                            <input type="email" value={this.state.email} onChange={this.handleChange("email")} class="form-control" />
+                            <input type="email" value={this.state.email} onChange={(event) => this.handleChange("email", event)} class="form-control" />
                         </div>
                         <div class="form-group">
                             <label >Password</label>
-                            <input type="password" value={this.state.password} onChange={this.handleChange("password")} class="form-control" />
+                            <input type="password" value={this.state.password} onChange={(event) => this.handleChange("password", event)} class="form-control" />
                         </div>
                         <button type="submit" onClick={this.handleLogin} className="btn btn-dark">Login</button>
                     </form>
 
                     {this.state.loginError ?
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
                             Unauthorized Email id or password !
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => this.setState({ loginError: false })}>
                                 <span aria-hidden="true">&times;</span>
@@ -82,7 +82,7 @@ class Login extends Component {
                         </div>
                         : null}
                     {this.state.dataMissing ?
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <div class="alert alert-warning alert-dismissible fade show  mt-2" role="alert">
                             Enter all detail !
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => this.setState({ dataMissing: false })}>
                                 <span aria-hidden="true">&times;</span>
@@ -90,7 +90,7 @@ class Login extends Component {
                         </div>
                         : null}
                     {this.state.emailFormatNotMatch ?
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <div class="alert alert-warning alert-dismissible fade show  mt-2" role="alert">
                             Enter email in valid format !
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => this.setState({ emailFormatNotMatch: false })}>
                                 <span aria-hidden="true">&times;</span>
@@ -98,7 +98,7 @@ class Login extends Component {
                         </div>
                         : null}
                     {this.state.passwordFormatNotMatch ?
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <div class="alert alert-warning alert-dismissible fade show  mt-2" role="alert">
                             Password Must contain at least one uppercase and at least 8 or more characters
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => this.setState({ passwordFormatNotMatch: false })}>
                                 <span aria-hidden="true">&times;</span>
